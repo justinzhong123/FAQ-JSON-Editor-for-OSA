@@ -67,7 +67,8 @@ function extractCategoryNumber(id) {
 // 輔助函數：從ID提取問題編號
 function extractQuestionNumber(id) {
     const match = id.match(/([a-z]+)_c(\d+)_(\d+)/);
-    return match ? parseInt(match[3].slice(0, 1)) : 0;
+    // match[2] 是類別編號，從 match[3]中切掉類別編號的長度，剩下的就是問題編號
+    return match ? parseInt(match[3].slice(match[2].length)) : 0;
 }
 
 // 輔助函數：從ID提取部門代碼
